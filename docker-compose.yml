@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  nginx: 
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    image: nginx:1.21-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./reverse-proxy/data:/etc/nginx/conf.d
+      - ./certs:/etc/certs
+    depends_on:
+      - ipfs-kubo
+    restart: always
+
+  ipfs-kubo:
+    image: ipfs/kubo:latest
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:5001:5001
+      - 8080:8080
+      - 4001:4001/tcp
+      - 4001:4001/udp
+    environment:
+      - IPFS_PATH=/data/ipfs
+
+volumes:
+  ipfs_path:
+  ipfs_fuse:
+  ipns_fuse:
+    
