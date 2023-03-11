@@ -15,7 +15,7 @@
 git clone https://github.com/ketrelhf/ipfs-gateway-docker.git
 ```
 2.nginx 설정 수정하기  
-reverse-proxy/data/gateway.conf 파일을 수정하고,
+reverse-proxy/data/gateway.conf 파일을 수정하고,  
 https(443) 서버를 여실려면, certs 폴더를 만들고 SSL 키파일을 넣으세요.
 
 3.폴더에 진입하고, 빌드/실행하세요  
