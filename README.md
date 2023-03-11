@@ -1,4 +1,4 @@
-# Cloudflare IPFS, dweb.link는 느립니다
+# ipfs.io, dweb.link은 느립니다
 
 나만의 ipfs http gateway 단독서버를 쓰세요.
 
